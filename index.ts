@@ -2,33 +2,31 @@ import express from "express";
 
 const app = express();
 
-const NAMES = ["Stocktin", "Kade", "Jordin", "Troy"];
+type Habit = {
+  name: string;
+  icon_url: string;
+  days_this_week: [
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean
+  ];
+};
 
-function getRandomName() {
-  return NAMES[Math.floor(Math.random() * NAMES.length)];
-}
+const MOCK_HABITS: Habit[] = [
+  {
+    name: "Running",
+    icon_url:
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ficons%2Frunning&psig=AOvVaw2krMed8P7SC5ocWLFxutAe&ust=1735332366084000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCv7f2mxooDFQAAAAAdAAAAABAE",
+    days_this_week: [true, false, true, false, true, false, true],
+  },
+];
 
 app.get("/", (_req, res) => {
-  res.status(200).json({
-    people: [
-      {
-        name: "Jordin",
-        age: 29,
-      },
-      {
-        name: "Lanina",
-        age: 29,
-      },
-      {
-        name: "Sawyer",
-        age: 7,
-      },
-      {
-        name: "Scarlett",
-        age: 4,
-      },
-    ],
-  });
+  res.status(200).json({ habits: MOCK_HABITS });
 });
 
 app.listen(4000, () => console.log("Server started"));
