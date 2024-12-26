@@ -9,24 +9,26 @@ function getRandomName() {
 }
 
 app.get("/", (_req, res) => {
-  res.status(200).json([
-    {
-      name: "Jordin",
-      age: 29,
-    },
-    {
-      name: "Lanina",
-      age: 29,
-    },
-    {
-      name: "Sawyer",
-      age: 7,
-    },
-    {
-      name: "Scarlett",
-      age: 4,
-    },
-  ]);
+  res.status(200).json({
+    people: [
+      {
+        name: "Jordin",
+        age: 29,
+      },
+      {
+        name: "Lanina",
+        age: 29,
+      },
+      {
+        name: "Sawyer",
+        age: 7,
+      },
+      {
+        name: "Scarlett",
+        age: 4,
+      },
+    ],
+  });
 });
 
 app.listen(4000, () => console.log("Server started"));
